@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Supplier</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        <a href="{% url 'home' %}"><button class="add">Daftar Product</button></a>
+
+        <a href="{% url 'daftar_supplier' %}"><button class="add">Daftar Supplier</button></a>
+
+        <a href="{% url 'daftar_kategori' %}"><button class="add">Daftar Kategori</button></a>
+
+        <!-- Daftar Supplier -->
+        <div class="table-container">
+            <h2>Daftar Supplier</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Nomor Telepon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for supplier in suppliers %}
+                    <tr>
+                        <td>{{ supplier.nama_supplier }}</td>
+                        <td>{{ supplier.alamat }}</td>
+                        <td>{{ supplier.nomor_telepon }}</td>
+                        <td>
+                            <a href="{% url 'edit_supplier' supplier.id %}"><button class="update">Edit</button></a>
+                            <a href="{% url 'hapus_supplier' supplier.id %}"><button class="delete">Hapus</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="action-buttons">
+                <a href="{% url 'tambah_supplier' %}"><button class="add">Tambah Supplier</button></a>
+            </div>
+            
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Nurul Arini</p>
+        </footer>
+    </div>
+</body>
+</html>

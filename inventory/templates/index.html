@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Management Inventory Toko Sepatu</h1>
+            <img src="{% static 'inventory/profile.jpg' %}" alt="Foto Profil" class="profile-img">
+            <p>Nama: Nurul Arini</p>
+            <p>NIM: G.211.22.0047</p>
+        </header>
+
+        <footer>
+            <a href="{% url 'home' %}" class="btn btn-primary">Masuk ke Halaman Utama</a>
+        </footer>
+        
+    </div>
+</body>
+</html>

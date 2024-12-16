@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Kategori</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Tombol untuk Menambah Kategori -->
+            <a href="{% url 'home' %}"><button class="add">Daftar Product</button></a>
+
+            <a href="{% url 'daftar_supplier' %}"><button class="add">Daftar Supplier</button></a>
+        
+            <a href="{% url 'daftar_kategori' %}"><button class="add">Daftar Kategori</button></a>
+        
+
+        <!-- Daftar Kategori -->
+        <div class="table-container">
+            <h2>Daftar Kategori</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Kategori</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kategori in kategoris %}
+                    <tr>
+                        <td>{{ kategori.nama_kategori }}</td>
+                        <td>
+                            <a href="{% url 'edit_kategori' kategori.id %}"><button class="update">Edit</button></a>
+                            <a href="{% url 'hapus_kategori' kategori.id %}"><button class="delete">Hapus</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="action-buttons">
+                <a href="{% url 'tambah_kategori' %}"><button class="add">Tambah kategori</button></a>
+            </div>
+            
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Nurul Arini</p>
+        </footer>
+    </div>
+</body>
+</html>

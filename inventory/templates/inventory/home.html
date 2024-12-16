@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Toko Sepatu</title>
+
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        
+        <a href="{% url 'home' %}"><button class="add">Daftar Produk</button></a>
+
+        <a href="{% url 'daftar_supplier' %}"><button class="add">Daftar Supplier</button></a>
+
+        <a href="{% url 'daftar_kategori' %}"><button class="add">Daftar Kategori</button></a>
+
+        
+        <!-- Daftar Produk -->
+        <div class="table-container">
+            <h2>Daftar Produk</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Brand</th>
+                        <th>Ukuran</th>
+                        <th>Warna</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.brand }}</td>
+                        <td>{{ product.size }}</td>
+                        <td>{{ product.color }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>
+                            <a href="{% url 'update_product' product.id %}"><button class="update">Edit</button></a>
+                            <a href="{% url 'delete_product' product.id %}"><button class="delete">Hapus</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="action-buttons">
+                <a href="{% url 'add_product' %}"><button class="add">Tambah Produk</button></a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Nurul Arini</p>
+        </footer>
+    </div>
+</body>
+</html>
